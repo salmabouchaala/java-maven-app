@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
-public class Application {
+public class application {
 
     public static void main(String[] args)
     {
