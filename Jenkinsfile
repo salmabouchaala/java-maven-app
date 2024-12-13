@@ -2,7 +2,7 @@
 pipeline{
     agent any
     tools{
-        maven 'Maven'
+        nodejs 'NodeJS'
     }
     environment{
         NEW_VERSION = '1.3.0'
@@ -18,7 +18,7 @@ pipeline{
             steps{
                 echo 'building the application...'
                 echo "building version ${NEW_VERSION}"
-                sh"mvn install"
+                sh"npm install"
             }
         }
 
