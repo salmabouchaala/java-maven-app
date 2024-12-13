@@ -1,43 +1,37 @@
-// CODE_CHANGES = getGitCahnges()
-pipeline{
+pipeline {
     agent any
-    environment{
+    environment {
         NEW_VERSION = '1.3.0'
-        SERVER_CREDENTIALS = credentials('server-credentials')
     }
-    stages{
-        stage("build"){
-            // when{
-            //     expression{
-            //        CODE_CHANGES == false
-            //     }
-            // }
-            steps{
-                echo 'building the application...'
-                echo "building version ${NEW_VERSION}"
-            }
-        }
-  
-        stage("test"){
-            when{
-                expression{
-                    env.BRANCH_NAME == 'dev'
-                }
-            }
-            steps{
-                 echo 'testing the application...'
+    stages {
+        stage("build") {
+            steps {
+                echo 'Building the application...'
+                echo "Building version ${NEW_VERSION}"
             }
         }
 
-        stage("deploy"){
-            steps{
-                 echo 'deploying the application...'
-                 echo "deploying with ${SERVER_CREDENTIALS}"
-                 withCredentials([
-                     usernamePassword(credentials: 'server-credentials', usernameVariablr: USER,  passwordVariable:PWD)
-                     ]){
-                     sh "some script ${USER} ${PWD}"
-                 }
+        stage("test") {
+            when {
+                expression { env.BRANCH_NAME == 'dev' }
+            }
+            steps {
+                echo 'Testing the application...'
+            }
+        }
+
+        stage("deploy") {
+            steps {
+                echo 'Deploying the application...'
+                withCredentials([
+                    usernamePassword(credentialsId: 'server-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')
+                ]) {
+                    sh '''
+                        echo "Deploying with user: ${USER}"
+                        # Replace with your actual deployment script
+                        some_script.sh ${USER} ${PWD}
+                    '''
+                }
             }
         }
     }
