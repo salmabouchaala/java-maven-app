@@ -1,4 +1,5 @@
 // CODE_CHANGES = getGitCahnges()
+def gv
 pipeline{
     agent any
     // tools{
@@ -14,12 +15,22 @@ pipeline{
         SERVER_CREDENTIALS = credentials('server-credentials')
     }
     stages{
+            stage("init"){
+            steps{
+               script{
+                   gv = load "script.groovy"
+               }
+            }
+        }
         stage("build"){
             // when{
             //     expression{
             //        CODE_CHANGES == false
             //     }
             // }
+            script{
+                gv.buildApp()
+            }
             steps{
                 echo 'building the application...'
                 echo "building version ${NEW_VERSION}"
