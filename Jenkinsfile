@@ -1,14 +1,14 @@
-CODE_CHANGES = getGitCahnges()
+// CODE_CHANGES = getGitCahnges()
 pipeline{
     agent any
     
     stages{
         stage("build"){
-            when{
-                expression{
-                   CODE_CHANGES == false
-                }
-            }
+            // when{
+            //     expression{
+            //        CODE_CHANGES == false
+            //     }
+            // }
             steps{
                 echo 'building the application...'
                 echo 'building the application...'
