@@ -1,7 +1,9 @@
 // CODE_CHANGES = getGitCahnges()
 pipeline{
     agent any
-    
+    environment{
+        NEW_VERSIN = '1.3.0'
+    }
     stages{
         stage("build"){
             // when{
@@ -11,7 +13,7 @@ pipeline{
             // }
             steps{
                 echo 'building the application...'
-                echo 'building the application...'
+                echo 'building version ${NEW_VERSION}'
             }
         }
   
