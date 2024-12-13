@@ -52,16 +52,17 @@ pipeline{
         }
 
         stage("deploy"){
-            input{
-                message "Select the environment to deploy to"
-                ok "Done"
-                parameters{
-                    choice(name: 'ONE', choices: ['dev','staging','prod'], description:'')
-                    choice(name: 'TWO', choices: ['dev','staging','prod'], description:'')
-                }
-            }
+            // input{
+            //     message "Select the environment to deploy to"
+            //     ok "Done"
+            //     parameters{
+            //         choice(name: 'ONE', choices: ['dev','staging','prod'], description:'')
+            //         choice(name: 'TWO', choices: ['dev','staging','prod'], description:'')
+            //     }
+            // }
             steps{
                 script{
+                    ENV.env = input message : "Select the environment to deploy to", ok: "Done", parameters: [choice(name: 'ONE', choices: ['dev','staging','prod'],description:'')]
                     echo "Deploying to ${ONE}"
                     echo "Deploying to ${TWO}"
                 }  
