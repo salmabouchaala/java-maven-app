@@ -63,8 +63,8 @@ pipeline{
             steps{
                 script{
                     env = input message : "Select the environment to deploy to", ok: "Done", parameters: [choice(name: 'ONE', choices: ['dev','staging','prod'],description:'')]
-                    echo "Deploying to ${ONE}"
-                    echo "Deploying to ${TWO}"
+                    // echo "Deploying to ${ONE}"
+                    // echo "Deploying to ${TWO}"
                 }  
                  echo 'deploying the application...'
                  echo "deploying with ${SERVER_CREDENTIALS}"
