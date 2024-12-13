@@ -68,7 +68,7 @@ pipeline{
                  echo 'deploying the application...'
                  echo "deploying with ${SERVER_CREDENTIALS}"
                  echo "deploying version ${params.VERSION}"
-                 echo "deploying to ${ENV}"
+                 // echo "deploying to ${ENV}"
                  // sh "${SERVER_CREDENTIALS}"
                  // withCredentials([
                  //     usernamePassword(credentials: 'server-credentials', usernameVariablr: USER,  passwordVariable:PWD)
