@@ -64,7 +64,7 @@ pipeline{
                 script{
                     echo "Deploying to ${ONE}"
                     echo "Deploying to ${TWO}"
-                    
+                }  
                  echo 'deploying the application...'
                  echo "deploying with ${SERVER_CREDENTIALS}"
                  echo "deploying version ${params.VERSION}"
