@@ -28,10 +28,11 @@ pipeline{
             //        CODE_CHANGES == false
             //     }
             // }
-            script{
+           
+            steps{
+                 script{
                 gv.buildApp()
             }
-            steps{
                 echo 'building the application...'
                 echo "building version ${NEW_VERSION}"
                 // sh"npm install"
