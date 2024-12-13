@@ -1,9 +1,9 @@
 // CODE_CHANGES = getGitCahnges()
 pipeline{
     agent any
-    tools{
-        nodejs 'NodeJS'
-    }
+    // tools{
+    //     nodejs 'NodeJS'
+    // }
     environment{
         NEW_VERSION = '1.3.0'
         SERVER_CREDENTIALS = credentials('server-credentials')
