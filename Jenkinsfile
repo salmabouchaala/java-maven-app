@@ -39,17 +39,19 @@ pipeline{
                
             }
         }
-   stage("build image") {
-    steps {
-        script {
-            echo "building the docker image..."
-            withDockerRegistry([credentialsId: 'docker-hub-repo', url: '']) {
-                docker.build('salmabouchaala/my-repo:jma-2.0').push('jma-2.0')
+        stage("build image"){
+                
+                steps{
+                    script{
+                        echo "building the docker image..."
+                        withCredentials([usernamePassword(credentialsId:'docker-hub-repo', passwordVariable:'PASS',usernameVariable:'salmabouchaala')]){
+                            sh 'docker build -t salmabouchaala/my-repo:jma-2.0 .'
+                            sh 'echo $PASS | docker login -u "salmabouchaala" --password-stdin'
+                            sh 'docker push salmabouchaala/my-repo:jma-2.0'
+                        }
+                    }
+                }
             }
-        }
-    }
-}
-
 
         // stage("test"){
         //     when{
