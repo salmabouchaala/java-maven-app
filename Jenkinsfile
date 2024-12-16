@@ -91,6 +91,6 @@ pipeline{
         //          //     sh "some script ${USER} ${PWD}"
         //          // }
         //     }
-        }
+        // }
     }
 }
