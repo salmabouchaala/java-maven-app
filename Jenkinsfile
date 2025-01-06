@@ -44,11 +44,11 @@ pipeline{
                 steps{
                     script{
                         echo "building the docker image..."
-                        withCredentials([usernamePassword(credentialsId:'docker-hub-repo', passwordVariable:'PASS',usernameVariable:'salmabouchaala')]){
-                            sh 'docker build -t salmabouchaala/my-repo:jma-2.0 .'
-                            sh 'echo salma21189862 | docker login -u "salmabouchaala" --password-stdin'
-                            sh 'docker push salmabouchaala/my-repo:jma-2.0'
-                        }
+                        // withCredentials([usernamePassword(credentialsId:'docker-hub-repo', passwordVariable:'PASS',usernameVariable:'salmabouchaala')]){
+                        //     sh 'docker build -t salmabouchaala/my-repo:jma-2.0 .'
+                        //     sh 'echo salma21189862 | docker login -u "salmabouchaala" --password-stdin'
+                        //     sh 'docker push salmabouchaala/my-repo:jma-2.0'
+                        // }
                     }
                 }
             }
